@@ -28,11 +28,13 @@ pipeline {
                 echo "Tests started"
                 echo env.BRANCH_NAME
                 sh '''
-                    echo $env.BRANCH_NAME
+                    echo ${env.BRANCH_NAME}
                     ls
                     python3 -m venv venv
-                    source venv/bin/activate
-                    pip install -r application/requirements.txt
+                    . venv/bin/activate
+                    cd application 
+                    pip install -r requirements.txt
+                    python3 manage.py test
                 '''
                 echo "Tests finished"
             }
