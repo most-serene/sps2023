@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   app:
-    image: "sps-django:${env.BRANCH_NAME}"
+    image: "sps-django:${BRANCH}"
     restart: always
     build:
       context: ./application
@@ -18,7 +18,7 @@ services:
       - app-network
 
   db:
-    image: "postgres:${env.BRANCH_NAME}"
+    image: "postgres:${BRANCH}"
     hostname: db
     restart: always
     # user: postgres
