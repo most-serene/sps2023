@@ -18,7 +18,7 @@ services:
       - app-network
 
   db:
-    image: "postgres:${BRANCH}"
+    image: "postgres"
     hostname: db
     restart: always
     # user: postgres
