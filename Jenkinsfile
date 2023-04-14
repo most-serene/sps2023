@@ -57,9 +57,6 @@ pipeline {
         }
     }
     post {
-        always {
-            echo TODO
-        }
         success {
             setBuildStatus("Build succeeded", "SUCCESS");
         }
