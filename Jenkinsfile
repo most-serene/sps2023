@@ -27,7 +27,7 @@ pipeline {
             steps {
                 echo "Tests started"
                 echo env.BRANCH_NAME
-                sh '''
+                sh """
                     echo ${env.BRANCH_NAME}
                     ls
                     python3 -m venv venv
@@ -35,7 +35,7 @@ pipeline {
                     cd application 
                     pip install -r requirements.txt
                     python3 manage.py test
-                '''
+                """
                 echo "Tests finished"
             }
         }
@@ -58,9 +58,7 @@ pipeline {
     }
     post {
         always {
-            // archiveArtifacts artifacts: 'services/codeExecutor/build/libs/**/*.jar', fingerprint: true
-            // archiveArtifacts artifacts: 'services/projectService/build/libs/**/*.jar', fingerprint: true
-            junit 'services/projectService/build/test-results/**/*.xml'
+            echo TODO
         }
         success {
             setBuildStatus("Build succeeded", "SUCCESS");
