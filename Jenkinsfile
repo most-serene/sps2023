@@ -18,10 +18,8 @@ pipeline {
             steps {
                 echo "Build started"
                 echo env.BRANCH_NAME
-                def BRANC=env.BRANCH_NAME
                 sh """
-                    echo ${BRANCH}
-                    docker compose -f docker-compose-prod.yml --env-file $JENKINS_HOME/.envvars/sps2023/.env build
+                    BRANCH=${env.BRANCH_NAME} docker compose -f docker-compose-prod.yml --env-file $JENKINS_HOME/.envvars/sps2023/.env build
                 """
                 echo "Build finished"
             }
@@ -30,9 +28,7 @@ pipeline {
             steps {
                 echo "Tests started"
                 echo env.BRANCH_NAME
-                def BRANC=env.BRANCH_NAME
                 sh """
-                    echo ${BRANCH}
                     ls
                     python3 -m venv venv
                     . venv/bin/activate
@@ -49,10 +45,9 @@ pipeline {
             }
             steps {
                 echo 'Deliver started'
-                def BRANC=env.BRANCH_NAME
                 sh """
                 docker container ls -a
-                docker compose -f docker-compose-prod.yml --project-name sps2023 --env-file $JENKINS_HOME/.envvars/sps2023/production.env up -d --build
+                BRANCH=${env.BRANCH_NAME} docker compose -f docker-compose-prod.yml --project-name sps2023 --env-file $JENKINS_HOME/.envvars/sps2023/production.env up -d --build
                 docker container ls -a
                 """
                 
