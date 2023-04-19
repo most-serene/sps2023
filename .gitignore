@@ -177,3 +177,6 @@ cython_debug/
 *.iws
 workspace.xml
 tasks.xml
+
+dev_settings.py
+prod_settings.py
