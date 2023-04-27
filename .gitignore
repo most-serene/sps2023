@@ -132,7 +132,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
-.env
+moviesApp/.env
 .venv
 env/
 venv/
@@ -181,3 +181,4 @@ tasks.xml
 /sps_env
 dev_settings.py
 prod_settings.py
+.env
