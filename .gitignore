@@ -178,5 +178,6 @@ cython_debug/
 workspace.xml
 tasks.xml
 
+/sps_env
 dev_settings.py
 prod_settings.py

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie DB</title>
+</head>
+<body>
+<div>
+    <h1 align="center">Movie DB </h1>
+    <h3 align="center">(css free since 2023)</h3>
+</div>
+
+<ul>
+    {% for actor in actors%}
+        <li>{{actor.primaryname}}
+    {%endfor%}
+</ul>
+
+</body>
+</html>
