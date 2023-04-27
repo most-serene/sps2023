@@ -19,7 +19,7 @@ pipeline {
                 echo "Build started"
                 echo env.BRANCH_NAME
                 sh """
-                    cp $JENKINS_HOME/.envvars/sps2023/prod_settings.py application/moviesApp/settings.py
+                    cp $JENKINS_HOME/.envvars/sps2023/prod_settings.py moviesApp/moviesApp/settings.py
                     BRANCH=${env.BRANCH_NAME} docker compose -f docker-compose-prod.yml --env-file $JENKINS_HOME/.envvars/sps2023/.env build
                 """
                 echo "Build finished"
@@ -33,7 +33,7 @@ pipeline {
                     ls
                     python3 -m venv venv
                     . venv/bin/activate
-                    cd application 
+                    cd moviesApp 
                     pip install -r requirements.txt
                     python3 manage.py test
                 """

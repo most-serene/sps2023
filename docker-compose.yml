@@ -1,10 +1,10 @@
 version: "3.8"
 services:
     app:
-        image: "sps-django:${BRANCH}"
+        image: "sps-django:${BRANCH:-latest}"
         restart: always
         build:
-            context: ./application
+            context: ./moviesApp
             network: host
             dockerfile: Dockerfile
         logging:
