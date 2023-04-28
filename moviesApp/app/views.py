@@ -7,17 +7,19 @@ from . import models
 
 def home(request):
     template = loader.get_template("app/index.html")
-    actors = []
+    movies = []
     if request.method == "GET" and "name" in request.GET.keys():
         subtitle = f'Results for query: "{request.GET["name"]}"'
-        actors = models.NameBasics.objects.filter(primaryname__icontains= request.GET["name"])
+        movies = models.TitleBasics.objects.filter(primarytitle__icontains= request.GET["name"])
     else:
-        subtitle = f'People you might be interested in'
-        while len(actors) < 9:
-            randId = f"nm{''.join([str(random.randint(0,9)) for _ in range(7)])}"
+        subtitle = f'Movies you might be interested in'
+        while len(movies) < 9:
+            randId = f"tt{''.join([str(random.randint(0,9)) for _ in range(7)])}"
             try:
-                actors.append(models.NameBasics.objects.get(pk=randId))
+                movie = models.TitleBasics.objects.get(pk=randId)
+                if movie.titletype == "movie":
+                    movies.append(movie)
             except:
                 pass
 
-    return HttpResponse(template.render({"actors": actors, "subtitle": subtitle}, request))
+    return HttpResponse(template.render({"movies": movies, "subtitle": subtitle}, request))
