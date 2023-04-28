@@ -10,6 +10,13 @@
     <h3 align="center">(css free since 2023)</h3>
 </div>
 
+<form action="{% url 'home' %}" method="get">
+{% csrf_token %}
+    <input name="name" placeholder="Name">
+    <input type="submit">
+</form>
+
+<h2>{{subtitle}}</h2>
 <ul>
     {% for actor in actors%}
         <li>{{actor.primaryname}}
