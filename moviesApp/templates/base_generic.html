@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Movie DB{% endblock %}</title>
+
+    {% block head %}<!-- head text -->{% endblock %}
+</head>
+<body style="background-color: cyan">
+    {% block content %}<!-- content text -->{% endblock %}
+    {% block footer %}
+        <footer>
+            <div style="text-align: center; background-color: #c5c5c5;">
+                <span>Copyright © 2023 All Rights Reserved</span>
+            </div>
+        </footer>
+    {% endblock %}
+</body>
+</html>

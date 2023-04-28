@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Movie DB</title>
-</head>
-<body bgcolor="cyan">
+{% extends "base_generic.html" %}
+
+{% block content %}
+
 <div>
     <h1 align="center">Movie DB </h1>
     <h3 align="center"><i>(css free since 2023)</i></h3>
@@ -23,5 +20,4 @@
     {%endfor%}
 </ul>
 
-</body>
-</html>
+{% endblock %}
