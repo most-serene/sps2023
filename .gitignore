@@ -182,3 +182,4 @@ tasks.xml
 dev_settings.py
 prod_settings.py
 .env
+.idea/sps2023.iml
