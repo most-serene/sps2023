@@ -19,7 +19,7 @@ pipeline {
                 echo "Build started"
                 echo env.BRANCH_NAME
                 sh """
-                    cp $JENKINS_HOME/.envvars/sps2023/prod_settings.py moviesApp/moviesApp/settings.py
+                    cp $JENKINS_HOME/.envvars/sps2023/djangoProd.env moviesApp/.env
                     BRANCH=${env.BRANCH_NAME} docker compose -f docker-compose-prod.yml --env-file $JENKINS_HOME/.envvars/sps2023/.env build
                 """
                 echo "Build finished"
