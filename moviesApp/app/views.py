@@ -4,13 +4,14 @@ from django.template import loader
 import random
 
 from . import models
+from . import queries
 
 def home(request):
     template = loader.get_template("app/index.html")
     movies = []
     if request.method == "GET" and "name" in request.GET.keys():
         subtitle = f'Results for query: "{request.GET["name"]}"'
-        movies = models.TitleBasics.objects.filter(primarytitle__icontains= request.GET["name"])
+        movies = queries.get_movie_from_name(request.GET["name"])
     else:
         subtitle = f'Movies you might be interested in'
         while len(movies) < 9:
