@@ -16,7 +16,7 @@
 <h2>{{subtitle}}</h2>
 <ul>
     {% for movie in movies %}
-        <li>{{movie.originaltitle}}
+    <li><a href="{% url 'detail' movie.tconst %}">{{movie.primarytitle}}</a>
     {%endfor%}
 </ul>
 
