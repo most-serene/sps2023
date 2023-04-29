@@ -1,0 +1,27 @@
+<session name='rec20230428-1539' probability='100'  type='ts_http'>
+<request><http url='http://172.22.99.60:8000/?csrfmiddlewaretoken=RAYXPf5JqU04XlKfq5yDCfP0lmDlMrwEk9DOPZubR4RwTtbd1NR6wrjmnPCac1oZ&amp;name=scary+movie' version='1.1' method='GET'>
+  <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' />
+  <http_header name='Accept-Encoding' value='gzip, deflate' />
+  <http_header name='Accept-Language' value='it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3' /></http></request>
+
+<thinktime random='true' value='8'/>
+
+<request><http url='/?csrfmiddlewaretoken=8TFSL0kr7q3ii5afMHV3n6yp4XXTKNQTBskJLKJTyAUKedBdnpewhi2L6qWIanIe&amp;name=Fantozzi' version='1.1' method='GET'>
+  <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' />
+  <http_header name='Accept-Encoding' value='gzip, deflate' />
+  <http_header name='Accept-Language' value='it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3' /></http></request>
+
+<thinktime random='true' value='23'/>
+
+<request><http url='/?csrfmiddlewaretoken=o64tfskkgmWqSV97xMUpefH4Izq396pVRFJkfcJMHwNSO3A58udS8rbqK2pSzGhg&amp;name=Star+Wars' version='1.1' method='GET'>
+  <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' />
+  <http_header name='Accept-Encoding' value='gzip, deflate' />
+  <http_header name='Accept-Language' value='it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3' /></http></request>
+
+<thinktime random='true' value='109'/>
+
+<request><http url='/?csrfmiddlewaretoken=IoaWfKuKadmu8gvXxXkFD74fB6Q4COPWbXPNfuTcBndW4oWV8FD8xjyBDzPT2oHh&amp;name=Mission+Impossible' version='1.1' method='GET'>
+  <http_header name='Accept' value='text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8' />
+  <http_header name='Accept-Encoding' value='gzip, deflate' />
+  <http_header name='Accept-Language' value='it-IT,it;q=0.8,en-US;q=0.5,en;q=0.3' /></http></request>
+</session>

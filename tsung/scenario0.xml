@@ -1,0 +1,22 @@
+<!DOCTYPE tsung SYSTEM "/opt/homebrew/Cellar/tsung/1.8.0/share/tsung/tsung-1.0.dtd" 
+    [ <!ENTITY mysession1 SYSTEM "record0.xml"> ]
+>
+<tsung loglevel="notice" version="1.0">
+
+
+<clients>
+    <client host="localhost" use_controller_vm="true"/>
+</clients>
+<servers>
+    <server host="172.22.99.60" port="8000" type="tcp"></server>
+</servers>
+
+<load>
+    <arrivalphase phase="1" duration="2" unit="minute">
+        <users interarrival="5" unit="second"></users>
+    </arrivalphase>
+</load>
+
+<sessions> &mysession1; </sessions>
+
+</tsung>

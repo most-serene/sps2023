@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+#$PATH = $PATH:/opt/homebrew/Cellar/tsung/1.8.0/lib/tsung/bin/tsung_stats.pl
+#export $PATH
+tsung -f scenario0.xml -l ./report -k start &
+sleep 2
+open http://localhost:8091 &
+wait
+
+# in log folder
+# /opt/homebrew/Cellar/tsung/1.8.0/lib/tsung/bin/tsung_stats.pl
