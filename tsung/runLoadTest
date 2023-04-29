@@ -2,6 +2,11 @@
 
 #$PATH = $PATH:/opt/homebrew/Cellar/tsung/1.8.0/lib/tsung/bin/tsung_stats.pl
 #export $PATH
+echo "--- Welcome in (Mao Tse-) Tsung --- "
+echo "your ip has be sent to the Minister of Truth"
+echo "configuring botnet on your system..."
+echo "--- Chinese backdoor opened successfully ---"
+open https://youtu.be/8m_Glbwi8UI &
 tsung -f scenario0.xml -l ./report -k start &
 sleep 2
 open http://localhost:8091 &
