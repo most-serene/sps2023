@@ -10,4 +10,4 @@ COPY . .
 
 # EXPOSE 8000
 
-CMD gunicorn moviesApp.wsgi:application --bind 0.0.0.0:8000
+CMD gunicorn moviesApp.wsgi:application --timeout 100 --workers 5 --bind 0.0.0.0:8000
