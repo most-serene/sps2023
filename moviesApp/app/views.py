@@ -22,7 +22,16 @@ def movie_detail(request, tconst):
     template = loader.get_template("app/movieDetail.html")
     try:
         movie = queries.get_movie_from_pk(tconst)
+        rating = queries.get_rating_from_pk(tconst)
+        principals = queries.get_principals_from_pk(tconst)
+        actor_names = {queries.get_person_from_pk(person.nconst): person for person in principals if person.category in ['actor', 'actress']}
+        cast_names = {queries.get_person_from_pk(person.nconst): person for person in principals if person.category not in ['actor', 'actress']}
     except:
         print("Error")
         return redirect(home)
-    return HttpResponse(template.render({"movie": movie}, request))
+    return HttpResponse(template.render({
+        "movie": movie,
+        "rating": rating,
+        "actors": actor_names.items(),
+        "cast": cast_names.items(),
+    }, request))

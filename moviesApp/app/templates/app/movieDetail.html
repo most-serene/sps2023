@@ -4,8 +4,28 @@
 
 <div>
     <h1 align="center"> {{movie.primarytitle}} </h1>
-    <h3 align="center"><i>({{movie.originaltitle}})</i></h3>
+    <h2 align="center"><i>({{movie.originaltitle}})</i></h2>
 </div>
+
+<h3>Generic data</h3>
+<ul>
+    <li><b>Length:</b> {{movie.runtimeminutes}} </li>
+    <li><b>Rating:</b> {{rating.averagerating}} ({{rating.numvotes}}) </li>
+</ul>
+
+<h3> Actors </h3>
+<ul>
+    {% for name, role in actors %}
+        <li>{{name.primaryname}} {{role.characters}} </li>
+    {% endfor %}
+</ul>
+
+<h3>Other cast</h3>
+<ul>
+    {% for name, role in cast %}
+        <li>{{name.primaryname}} ({{role.category}}) </li>
+    {% endfor %}
+</ul>
 
 
 

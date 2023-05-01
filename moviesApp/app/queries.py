@@ -14,6 +14,15 @@ def get_movie_from_pk(pk: str):
     except:
         raise KeyError()
 
+def get_rating_from_pk(pk: str):
+    try:
+        return models.TitleRatings.objects.raw(f'SELECT * FROM title_ratings WHERE tconst = %s', [pk])[0]
+    except:
+        raise KeyError()
+
+def get_principals_from_pk(pk: str):
+    return models.TitlePrincipals.objects.raw(f'SELECT * FROM title_principals WHERE tconst = %s', [pk])
+
 # endregion
 
 
