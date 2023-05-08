@@ -38,7 +38,7 @@ try:
     csv_file = open("queryset.csv", "w")
     for i in out:
         name, id = i
-        csv_file.write(f'"{name}","{id}"\n')
+        csv_file.write(f'{name}§{id}\n')
         print(",".join(i))
 
 
