@@ -4,7 +4,7 @@ from . import models
 
 
 def get_movie_from_name(name: str):
-    return models.TitleBasics.objects.raw(f'SELECT * FROM title_basics WHERE LOWER("primaryTitle") LIKE %s', ['%' + name + '%'])
+    return models.TitleBasics.objects.raw(f'SELECT * FROM title_basics WHERE LOWER("primaryTitle") LIKE %s', ['%' + name.lower() + '%'])
     # movies = models.TitleBasics.objects.filter(primarytitle__icontains=name)
 
 
