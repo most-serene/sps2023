@@ -1,7 +1,7 @@
 from . import models
 
-# region Movie
 
+# region Movie
 
 def get_movie_from_name(name: str):
     return models.TitleBasics.objects.raw(f'SELECT * FROM title_basics WHERE LOWER("primaryTitle") LIKE %s', ['%' + name.lower() + '%'])
@@ -14,11 +14,13 @@ def get_movie_from_pk(pk: str):
     except:
         raise KeyError()
 
+
 def get_rating_from_pk(pk: str):
     try:
         return models.TitleRatings.objects.raw(f'SELECT * FROM title_ratings WHERE tconst = %s', [pk])[0]
     except:
         raise KeyError()
+
 
 def get_principals_from_pk(pk: str):
     return models.TitlePrincipals.objects.raw(f'SELECT * FROM title_principals WHERE tconst = %s', [pk])
