@@ -13,8 +13,12 @@ def home(request):
     subtitle = "Search a movie"
     if request.method == "GET" and "name" in request.GET.keys():
         subtitle = f'Results for query: "{request.GET["name"]}"'
-        print(request.GET["name"])
-        movies = queries.get_movie_from_name(request.GET["name"])
+
+        name = request.GET["name"]
+        if name[-1] == 'Â':
+            name = name[:-1]
+        print(name)
+        movies = queries.get_movie_from_name(name)
 
     return HttpResponse(template.render({"movies": movies, "subtitle": subtitle}, request))
 
