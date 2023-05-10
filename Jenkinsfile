@@ -8,6 +8,11 @@ void setBuildStatus(String message, String state) {
     ]);
 }
 
+void setBuildBadge(String apiKey, String projectId, String status) {
+    httpRequest contentType: "APPLICATION_JSON", httpMode: "POST", ignoreSslErrors: true,
+        requestBody: JsonOutput.toJson([status: status, api_key: apiKey]), url: "https://217.160.40.42:45001/projects/" + projectId
+}
+
 pipeline {
     agent any
     triggers {
@@ -59,9 +64,23 @@ pipeline {
     post {
         success {
             setBuildStatus("Build succeeded", "SUCCESS");
+            script {
+                if (env.BRANCH_NAME == 'master') {
+                    withEnv(readFile("$JENKINS_HOME/.envvars/sps2023/jenkinsEnv.txt").split('\n') as List) {
+                        setBuildBadge(env.API_KEY, "3", "success");
+                    }
+                }
+            }
         }
         failure {
             setBuildStatus("Build failed", "FAILURE");
+            script {
+                if (env.BRANCH_NAME == 'master') {
+                    withEnv(readFile("$JENKINS_HOME/.envvars/sps2023/jenkinsEnv.txt").split('\n') as List) {
+                        setBuildBadge(env.API_KEY, "3", "failed");
+                    }
+                }
+            }
         }
     }
 }
