@@ -4,13 +4,13 @@
 <tsung loglevel="notice" version="1.0">
 
     <clients>
-        <client host="localhost" use_controller_vm="true"/>
+        <client host="localhost" use_controller_vm="true" maxusers="11"/>
     </clients>
     <servers>
         <server host="172.22.99.60" port="8000" type="tcp"/>
     </servers>
 
-    <load duration="5" unit="minute">
+    <load duration="50" unit="minute">
         <arrivalphase phase="1" duration="10" unit="minute">
             <users maxnumber="10" arrivalrate="100" unit="second"/>
         </arrivalphase>
@@ -22,12 +22,12 @@
 
     <sessions>
         <session probability="100" name="ab" type="ts_http">
-            <for from="1" to="1000" var="i">
-                <thinktime min="2" max="10" random="true"/>
+            <for from="1" to="10" var="i">
+                <thinktime min="2" max="5" random="true"/>
 
-                <setdynvars sourcetype="file" fileid="queryset" delimiter="§" order="random">
-                     <var name="movieName" />
-                     <var name="movieId" />
+                <setdynvars sourcetype="file" fileid="queryset" delimiter="§" order="iter">
+                    <var name="movieName" />
+                    <var name="movieId" />
                 </setdynvars>
 
                 <request subst="true">
