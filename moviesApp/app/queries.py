@@ -4,7 +4,7 @@ from . import models
 # region Movie
 
 def get_movie_from_name(name: str):
-    return models.TitleBasics.objects.raw(f'SELECT * FROM title_basics WHERE LOWER("primaryTitle") LIKE %s', ['%' + name.lower() + '%'])
+    return models.TitleBasics.objects.raw(f'SELECT * FROM title_basics WHERE "primaryTitle" ILIKE %s', ['%' + name.lower() + '%'])
     # movies = models.TitleBasics.objects.filter(primarytitle__icontains=name)
 
 
@@ -31,7 +31,7 @@ def get_principals_from_pk(pk: str):
 # region Movie
 
 def get_person_from_name(name: str):
-    return models.NameBasics.objects.raw(f'SELECT * FROM name_basics WHERE LOWER("primaryname") LIKE %s', ['%' + name + '%'])
+    return models.NameBasics.objects.raw(f'SELECT * FROM name_basics WHERE "primaryName" ILIKE %s', ['%' + name + '%'])
 
 
 def get_person_from_pk(pk: str):
