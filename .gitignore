@@ -187,3 +187,5 @@ prod_settings.py
 # Tsung
 report/
 
+*/times.csv
+
