@@ -38,6 +38,9 @@ try:
     csv_file = open("queryset.csv", "w")
     for i in out:
         name, id = i
+
+        name = name[random.randint(0,max(len(name)//3-1, 0)) : -1*random.randint(1 ,max(len(name)//3-1, 1))]
+
         csv_file.write(f'{name}§{id}\n')
         print(",".join(i))
 
