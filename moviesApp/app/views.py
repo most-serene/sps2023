@@ -1,10 +1,9 @@
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import redirect
-import time
 from . import models
 from . import queries
-
+from django.db import connection
 
 def home(request):
     file = open("./times.csv", "a")
@@ -13,22 +12,18 @@ def home(request):
     subtitle = "Search a movie"
     if request.method == "GET" and "name" in request.GET.keys():
         subtitle = f'Results for query: "{request.GET["name"]}"'
-        start = time.time()
-        movies = queries.get_movie_from_name(request.GET["name"])
+        movies = list(queries.get_movie_from_name(request.GET["name"]))
 
-    response = HttpResponse(template.render({"movies": movies, "subtitle": subtitle}, request))
-    if request.method == "GET" and "name" in request.GET.keys():
-        end = time.time()
-        file.write(f"name,{end-start}\n")
-        file.close()
-    return response
+    file.write(f"name,{float(connection.queries[0]['time'])}\n")
+    file.close()
+
+    return HttpResponse(template.render({"movies": movies, "subtitle": subtitle}, request))
 
 
 def movie_detail(request, tconst):
     file = open("./times.csv", "a")
     template = loader.get_template("app/movieDetail.html")
     try:
-        start = time.time()
         movie = queries.get_movie_from_pk(tconst)
         rating = queries.get_rating_from_pk(tconst)
         principals = queries.get_principals_from_pk(tconst)
@@ -39,14 +34,13 @@ def movie_detail(request, tconst):
         return redirect(home)
 
 
-    response = HttpResponse(template.render({
+    tot_time = sum([float(q["time"]) for q in connection.queries])
+    file.write(f"id,{tot_time}\n")
+    file.close()
+
+    return HttpResponse(template.render({
         "movie": movie,
         "rating": rating,
         "actors": actor_names.items(),
         "cast": cast_names.items(),
     }, request))
-
-    end = time.time()
-    file.write(f"id,{end - start}\n")
-    file.close()
-    return response
