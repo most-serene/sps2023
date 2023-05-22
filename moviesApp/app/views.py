@@ -14,8 +14,8 @@ def home(request):
         subtitle = f'Results for query: "{request.GET["name"]}"'
         movies = list(queries.get_movie_from_name(request.GET["name"]))
 
-    file.write(f"name,{float(connection.queries[0]['time'])}\n")
-    file.close()
+        file.write(f"name,{float(connection.queries[0]['time'])}\n")
+        file.close()
 
     return HttpResponse(template.render({"movies": movies, "subtitle": subtitle}, request))
 
