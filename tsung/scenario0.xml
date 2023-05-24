@@ -12,7 +12,7 @@
 
     <load duration="50" unit="minute">
         <arrivalphase phase="1" duration="10" unit="minute">
-            <users maxnumber="200" arrivalrate="30" unit="second"/>
+            <users maxnumber="250" arrivalrate="10" unit="second"/>
         </arrivalphase>
     </load>
 
@@ -23,7 +23,7 @@
     <sessions>
         <session probability="100" name="ab" type="ts_http">
             <for from="1" to="100" var="i">
-                <thinktime min="2" max="4" random="true"/>
+                <thinktime min="3" max="10" random="true"/>
 
                 <setdynvars sourcetype="file" fileid="queryset" delimiter="§" order="iter">
                     <var name="movieName" />
